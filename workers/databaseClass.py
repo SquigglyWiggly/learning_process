@@ -175,7 +175,7 @@ class Database:
     def setDQueryRows(self, sQuery: str = '', sKey=None) -> int:
         """Method to call the iSelect method on a given sql """
         
-        if not "SELECT" in sQuery.upper():
+        if "SELECT" not in sQuery.upper():
             return "Not a valid select statement"
 
         # build the query
