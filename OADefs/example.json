@@ -1,0 +1,136 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Example Swagger",
+        "description": "Example for defining future swagger defs",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api/example",
+            "description": "endpoint base url"
+        }
+    ],
+    "paths": {
+        "/getExample": {
+            "post": {
+                "operationId": "example.get_all",
+                "tags": [
+                    "example"
+                ],
+                "summary": "to fetch all example data from a soon to be configured db table",
+                "description": "serves as an example for future swagger definitions",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Fetch_example"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Get_example"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request. Error in submitted information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse400"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Authorization information missing or invalid"
+                    },
+                    "404": {
+                        "description": "A product or uniUid with specified attributes were not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse404"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Get_example": {
+                "type": "object",
+                "properties": {
+                    "placeholder": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Fetch_example": {
+                "type": "object",
+                "properties": {
+                    "placeholder": {
+                        "type": "string"
+                    }
+                }
+            },
+            "errorResponse400": {
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "type": "string",
+                        "example": "Requesy body is not valid JSON"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "example": 400
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Bad Request"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "about:blank" 
+                    }
+                }
+            },
+            "errorResponse404": {
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "type": "integer",
+                        "example": -11239
+                    },
+                    "status": {
+                        "type": "integer",
+                        "example": 404
+                    },
+                    "title": {
+                        "type": "string",
+                        "example":"Bad Request"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "about:blank"
+                    }
+                }
+            }
+        }
+    }
+}
