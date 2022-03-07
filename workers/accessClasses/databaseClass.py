@@ -12,7 +12,7 @@ class NoConfigException(Exception):
 class Database:
     """Class meant to be generalised to create a db connection from a given config and perform CRUD operations"""
 
-    def __init__(self, config_file: str = ''):
+    def __init__(self, config_file="./workers/common/config.ini"):
 
         self.config_file = config_file
 
